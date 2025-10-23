@@ -4,19 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Page</title>
+
+    <style>
+        /* General page layout */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 40px;
+            text-align: center;
+        }
+
+        /* Heading style */
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 32px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Container for product cards */
+        div {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Product card style */
+        div p {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 15px 20px;
+            width: 250px;
+            text-align: left;
+            font-size: 16px;
+            color: #555;
+            margin: 0;
+        }
+
+        /* Space between product sets */
+        div p:not(:last-child) {
+            margin-bottom: 10px;
+        }
+
+        /* "No Products" message */
+        p:last-child:only-child {
+            color: #888;
+            font-style: italic;
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
-    <h1>User Page</h1>
+    <h1>Product Details</h1>
     
-    <div class=" "> 
-        {% for i in Product %}
-            <p> {{i.name}} | </p>
-            <p> {{i.price}} | </p>
-            <p> {{i.description}} | </p>
-            <p> {{i.types}} </p>
-
+    <div>
+        {% for i in details %}
+            <div class="product">
+                <p><strong>Name:</strong> {{ i.name }}</p>
+                <p><strong>Price:</strong> ₹{{ i.price }}</p>
+                <p><strong>Description:</strong> {{ i.description }}</p>
+            </div>
         {% empty %}
-        <p>No Products</p>
+            <p>No Products</p>
         {% endfor %}
     </div>
     
